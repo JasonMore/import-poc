@@ -1,4 +1,10 @@
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
+- 0.1
+deploy:
+  provider: heroku
+  api_key:
+    secure: On3eM9xZHGNUJGxLZbWsx5o7DxD7sdG1GPg1hGhCv1MYpA4njWKavfVTTsMwlvDsCxCZad2p7SB+O8Q3IvwDvP9f3DRnaT69Q5lvwJMP/IWZ6/7gxtcNV0F1x8QmtRMyk/NWGhJghx8cwWkq/hbzInbqjEncCJdore+6S9R0j68=
+  app: import-poc
+  on:
+    repo: JasonMore/import-poc
