@@ -1,0 +1,444 @@
+<div data-bind="with: Home">
+<div class="panel panel-default">
+<div class="panel-heading">
+  Claims Summary
+</div>
+<div class="panel-body">
+<div class="table-responsive" data-bind="visible: ClaimsCountByFiscalWeek().length > 0">
+<table class="table table-condensed center">
+<thead>
+<tr>
+  <th>Fiscal Week</th>
+  <th>Claims</th>
+  <th>Exception</th>
+  <th>Ready For Submission</th>
+
+  <th>Submitted</th>
+  <th>Rejected</th>
+  <th>Modified Rejection</th>
+  <th>Ready for Resubmission</th>
+  <th>Resubmitted</th>
+  <th>Approved</th>
+  <th>Denied</th>
+  <th>Non-Claimable</th>
+</tr>
+</thead>
+<tbody>
+<!-- ko foreach: ClaimsCountByFiscalWeek -->
+<tr>
+  <td data-bind="text: Title">Dec 2014 Wk 1</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2013-12-01">12</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2013-12-01">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2013-12-01">0</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">1</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-01">2</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-01">3</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">0</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">2</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2013-12-01">1</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2013-12-01">1</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2013-12-01">1</a>
+  </td>
+</tr>
+
+<tr>
+  <td data-bind="text: Title">Dec 2014 Wk 2</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2013-12-08">45</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2013-12-08">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2013-12-08">8</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">5</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-08">5</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-08">2</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">6</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">4</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2013-12-08">3</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2013-12-08">4</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2013-12-08">4</a>
+  </td>
+</tr>
+
+<tr>
+  <td data-bind="text: Title">Dec 2014 Wk 3</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2013-12-15">29</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2013-12-15">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2013-12-15">5</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">3</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-15">1</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-15">3</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">2</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">1</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2013-12-15">4</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2013-12-15">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2013-12-15">3</a>
+  </td>
+</tr>
+
+<tr>
+  <td data-bind="text: Title">Dec 2014 Wk 4</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2013-12-22">14</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2013-12-22">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2013-12-22">1</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">2</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-22">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-22">1</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">0</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">2</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2013-12-22">2</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2013-12-22">2</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2013-12-22">1</a>
+  </td>
+</tr>
+
+<tr>
+  <td data-bind="text: Title">Dec 2014 Wk 5</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2013-12-29">4</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2013-12-29">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2013-12-29">0</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">1</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-29">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2013-12-29">1</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">0</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">1</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2013-12-29">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2013-12-29">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2013-12-29">0</a>
+  </td>
+</tr>
+
+<tr>
+  <td data-bind="text: Title">Jan 2014 Wk 1</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2014-01-05">2</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2014-01-05">2</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2014-01-05">0</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">0</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2014-01-05">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2014-01-05">0</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">0</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">0</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2014-01-05">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2014-01-05">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2014-01-05">0</a>
+  </td>
+</tr>
+
+<tr>
+  <td data-bind="text: Title">Jan 2014 Wk 3</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2014-01-19">7</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2014-01-19">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2014-01-19">2</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">3</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2014-01-19">0</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2014-01-19">1</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">0</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">0</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2014-01-19">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2014-01-19">1</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2014-01-19">0</a>
+  </td>
+</tr>
+
+<tr>
+  <td data-bind="text: Title">Jan 2014 Wk 4</td>
+  <td>
+    <a data-bind="text: Count, attr: { href: '/Search#/?FiscalWeek=' + StartOfWeek() }"
+       href="/Search#/?FiscalWeek=2014-01-26">10</a>
+  </td>
+  <td>
+    <a data-bind="text: ExceptionCount, attr: { href: '/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/Exceptions#/Exception Type/?ClaimStatus=0&amp;FiscalWeek=2014-01-26">2</a>
+  </td>
+  <td>
+    <a data-bind="text: ReadyForSubmissionCount, attr: { href: '/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/ReadyForSubmission#/Dashboard/?ClaimStatus=1&amp;FiscalWeek=2014-01-26">1</a>
+  </td>
+
+  <td data-bind="text: SubmittedCount">1</td>
+  <td>
+    <a data-bind="text: RejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2014-01-26">1</a>
+  </td>
+  <td>
+    <a data-bind="text: ModifiedRejectedCount, attr: { href: '/Rejections#/Dashboard/?FiscalWeek=' + StartOfWeek() }"
+       href="/Rejections#/Dashboard/?FiscalWeek=2014-01-26">0</a>
+  </td>
+  <td>
+    <!-- Special Case: We don't let the user go to the dashboard if there are Rejections for this fiscal week -->
+    <a data-bind="text: ReadyForResubmissionCount, attr: { href: '/Resubmissions#/Summary' }"
+       href="/Resubmissions#/Summary">2</a>
+  </td>
+  <td data-bind="text: ResubmittedCount">1</td>
+  <td class="highlighted">
+    <a data-bind="text: ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100&amp;FiscalWeek=2014-01-26">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100&amp;FiscalWeek=2014-01-26">0</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100&amp;FiscalWeek=' + StartOfWeek() }"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100&amp;FiscalWeek=2014-01-26">1</a>
+  </td>
+</tr>
+<!-- /ko -->
+<tr class="boldRow highlightedRow" data-bind="with: ClaimsCountByFiscalWeekSummary">
+  <td>Total</td>
+  <td>
+    <a data-bind="text: All" href="Search">123</a>
+  </td>
+  <td>
+    <a data-bind="text: Total_ExceptionCount" href="Exceptions">4</a>
+  </td>
+  <td>
+    <a data-bind="text: Total_ReadyForSubmissionCount" href="ReadyForSubmission">17</a>
+  </td>
+
+  <td data-bind="text: Total_SubmittedCount">16</td>
+  <td>
+    <a data-bind="text: Total_RejectedCount" href="Rejections">9</a>
+  </td>
+  <td>
+    <a data-bind="text: Total_ModifiedRejectedCount" href="Rejections">11</a>
+  </td>
+  <td>
+    <a data-bind="text: Total_ReadyForResubmissionCount" href="Resubmissions">10</a>
+  </td>
+  <td data-bind="text: Total_ResubmittedCount">11</td>
+  <td class="highlighted">
+    <a data-bind="text: Total_ApprovedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Approved.Key + '&amp;Count=100/' }"
+       href="/FinalStatus#/Listing/?ClaimStatus=7&amp;Count=100/">10</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: Total_DeniedCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.Denied.Key + '&amp;Count=100/' }"
+       href="/FinalStatus#/Listing/?ClaimStatus=8&amp;Count=100/">8</a>
+  </td>
+  <td class="highlighted">
+    <a data-bind="text: Total_NonClaimableCount, attr: { href: '/FinalStatus#/Listing/?ClaimStatus=' + ClaimStatuses.NonClaimable.Key + '&amp;Count=100/'}"
+       href="/FinalStatus#/Listing/?ClaimStatus=9&amp;Count=100/">10</a>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="well center" data-bind="visible: LoadingClaimsCountByFiscalWeek" style="display: none;">
+  <div class="BigSpinner"></div>
+</div>
+<div style="display: none"
+     data-bind="visible: ClaimsCountByFiscalWeek().length == 0 &amp;&amp; !LoadingClaimsCountByFiscalWeek()">
+  No open claims found.
+</div>
+</div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    User Alerts
+  </div>
+  <div class="panel-body">
+    <div style="display: none;" data-bind="visible: UserAlerts().length > 0 &amp;&amp; !LoadingUserAlerts()">
+      <div data-bind="foreach: UserAlerts"></div>
+    </div>
+    <div class="well center" data-bind="visible: LoadingUserAlerts()" style="display: none;">
+      <div class="BigSpinner"></div>
+    </div>
+    <div data-bind="visible: UserAlerts().length == 0 &amp;&amp; !LoadingUserAlerts()">
+      No user alerts found.
+    </div>
+  </div>
+</div>
+</div>

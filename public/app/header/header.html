@@ -1,0 +1,89 @@
+
+
+  <div>
+    <ul class="main">
+      <li class="brand">
+        <a href="/"><div class="logo"></div> Claims Hub</a>
+      </li>
+      <li class="pull-right userName">
+        Welcome, Jason More!
+        <a href="/Logout">Logout</a>
+      </li>
+      <li class="headerInputContainer pull-right">
+        <input class="form-control" type="text" placeholder="Service Order #" data-bind="onEnter: SearchByServiceOrderNumber, enable: !SearchingByServiceOrderNumber(), value: ServiceOrderNumber, valueUpdate: 'afterkeydown'">
+        <button class="btn Gray" data-bind="click: SearchByServiceOrderNumber, enable: !SearchingByServiceOrderNumber() &amp;&amp; ServiceOrderNumber()" disabled="">
+          <span class="SmallSpinner" data-bind="visible: SearchingByServiceOrderNumber()" style="display: none;"></span>
+          <span data-bind="text: SearchingByServiceOrderNumber() ? 'Searching...' : 'Search'">Search</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <ul class="hover">
+      <li ng-class="{active: $state.includes('home')}">
+        <a ui-sref="home">
+          <i class="glyphicon glyphicon-home"></i>
+          Home
+        </a>
+      </li>
+      <li ng-class="{active: $state.includes('search')}">
+        <a ui-sref="search">
+          <i class="glyphicon glyphicon-search"></i>
+          Search
+        </a>
+      </li>
+      <li data-bind="css: { active: ExceptionsPage() }" class="">
+        <a href="/Exceptions">
+          <i class="glyphicon glyphicon-warning-sign"></i>
+          Exceptions
+          <span class="badge SecondaryColor">0</span>
+        </a>
+      </li>
+      <li data-bind="css: { active: ReadyForSubmissionPage() }" class="">
+        <a href="/ReadyForSubmission">
+          <i class="glyphicon glyphicon-warning-sign"></i>
+          Ready for Submission
+          <span class="badge SecondaryColor">0</span>
+        </a>
+      </li>
+      <li data-bind="css: { active: RejectionsPage() }" class="">
+        <a href="/Rejections">
+          <i class="glyphicon glyphicon-thumbs-down"></i>
+          Rejections
+          <span class="badge SecondaryColor">0</span>
+        </a>
+      </li>
+      <li data-bind="css: { active: ResubmissionsPage() }" class="">
+        <a href="/Resubmissions">
+          <i class="glyphicon glyphicon-retweet"></i>
+          Ready for Resubmission
+          <span class="badge SecondaryColor">0</span>
+        </a>
+      </li>
+      <li data-bind="css: { active: FinalStatusPage() }" class="">
+        <a href="/FinalStatus">
+          <i class="glyphicon glyphicon-inbox"></i>
+          Final Status
+        </a>
+      </li>
+      <li data-bind="css: { active: AdminPage() }" class="">
+        <a href="/Admin">
+          <i class="glyphicon glyphicon-tasks"></i>
+          Admin
+        </a>
+      </li>
+      <li data-bind="css: { active: ReportsPage() }" class="">
+        <a href="/Reports">
+          <i class="glyphicon glyphicon-list-alt"></i>
+          Reports
+        </a>
+      </li>
+      <li>
+        <a data-bind="with: NotificationCenter, click: OpenNotifications">
+          <i class="glyphicon glyphicon-envelope"></i>
+          Notification Center
+          <span class="badge SecondaryColor" data-bind="css: { Bouncy: NewNotifications, SecondaryColor: !NewNotifications() }, text: Notifications().length">0</span>
+        </a>
+      </li>
+    </ul>
+  </div>

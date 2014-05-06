@@ -1,0 +1,1059 @@
+﻿html, body{
+    height: 100%;
+}
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    overflow-x: auto;
+    overflow-y: scroll !important;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    /*background-color: #f8f8f8;*/
+    /*background: #202020;*/
+    font-size: 14px;
+    line-height: 22px;
+    color: #4C4C4D;
+    margin: 0;
+
+    background: rgb(63,76,107);
+    background: -moz-linear-gradient(top, rgba(63,76,107,1) 0%, rgba(63,76,107,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(63,76,107,1)), color-stop(100%,rgba(63,76,107,1)));
+    background: -webkit-linear-gradient(top, rgba(63,76,107,1) 0%,rgba(63,76,107,1) 100%);
+    background: -o-linear-gradient(top, rgba(63,76,107,1) 0%,rgba(63,76,107,1) 100%);
+    background: -ms-linear-gradient(top, rgba(63,76,107,1) 0%,rgba(63,76,107,1) 100%);
+    background: linear-gradient(to bottom, rgba(63,76,107,1) 0%,rgba(63,76,107,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=0 );
+}
+
+.form-control:focus {
+    border-color: #84c447;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(132,196,71,0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(132,196,71,0.6);
+}
+
+.logo {
+    background: url(/Content/images/logo.png) no-repeat;
+    height: 30px;
+    width: 44px;
+    background-size: contain;
+    display: inline-block;
+    margin-bottom: -7px;
+}
+
+.mainpane, .basicBorder {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.fullpane {
+    padding: 12px;
+}
+
+.whiteBg {
+    background-color: white;
+}
+
+
+.mainpane {
+    background-color: white;
+    margin: 0 0 0 232px;
+    padding: 12px;
+    overflow: auto;
+
+    min-height: 600px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mainpane {
+}
+
+.sidebarBackground {
+    background: #ddd;
+}
+
+.sidebar {
+    /*background-color: white;*/
+    /*color: #eee;*/
+    border: none;
+    width: 220px;
+    float: left;
+    margin: 0;
+    padding: 12px;
+    overflow-wrap: break-word;
+    border-radius: 4px;
+}
+
+
+    .sidebar.no-border, .mainpane.no-border {
+        border: none;
+        padding: 0 12px;
+    }
+
+
+.container {
+    background: rgb(96,108,136); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96,108,136,1)), color-stop(100%,rgba(63,76,107,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
+}
+
+footer {
+    color: #808080;
+}
+
+header {
+    color: #eee;
+}
+
+header {
+    padding-top: 4px;
+
+}
+    header > div {
+        margin-top: 2px;
+    }
+
+        header > div > ul.main > li.pull-right:not(.headerInputContainer) {
+            line-height: 30px;
+        }
+
+.headerInputContainer {
+    margin-right: 24px;
+}
+
+.headerInputContainer > input.form-control {
+    margin-left: -170px;
+    width: 172px;
+    float: left!important;
+    width: initial;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: 1px solid transparent;
+    margin-right: -4px;
+}
+
+.headerInputContainer > input.form-control + button{
+    border: 1px solid lightgray;
+    float: right;
+}
+
+    header li.brand a {
+        color: #eee;
+        text-decoration: none;
+        font-size: 22px;
+        line-height: 24px;
+    }
+        header > div:last-child {
+            margin-bottom: 2px;
+            display: inline-block;
+        }
+        header > div:first-child > ul {
+            -webkit-padding-start: 0px;
+        }
+        header > div > ul {
+            -webkit-padding-start: 12px;
+            min-height: 44px;
+        }
+
+
+        header > div > ul {
+            list-style: none;
+            margin-bottom: 0;
+        }
+            header > div > ul.main > li.active {
+                border-bottom: 2px solid transparent;
+                /*background-color: rgba(0,0,0,0.05);*/
+            }
+        
+            header > div > ul > li {
+                display: inline-block;
+                border-bottom: 2px solid transparent;
+                text-align: center;
+                padding: 6px 0px 4px;
+            }
+
+                header > div > ul > li.active {
+                    border-bottom: 2px solid #84c447;
+                    color: white;
+                }
+                
+                header > div > ul > li.active > a {
+                    color: #eee;
+                }
+                
+                header > div > ul.hover > li:hover {
+                    /*background-color: rgba(0,0,0,0.05);*/
+                    cursor: pointer;
+                }
+
+                header > div > ul > li > a {
+                    padding: 4px 18px;
+                    /*color: #555;*/
+                    color: #CCC;
+                }
+
+                header > div > ul > li > a:hover {
+                    /*color: #333;*/
+                    color: #eee;
+                    text-decoration: none;
+                }
+
+h1, h2, h3 {
+    margin-top: 10px;
+    color: #555;
+}
+
+.link:hover, .link:focus, .Filter:hover, .Filter:focus {
+    color: #2a6496;
+    text-decoration: underline;
+}
+.link:active, .link:hover {
+    outline: 0;
+}
+.link {
+    color: #428bca;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.Filter {
+    color: #428bca;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+    .Filter > span {
+        text-decoration: underline;
+    }
+
+.PrimaryColor {
+    /*background-color: #90d7ec;*/
+    background-color: #428bca;
+    color: #fff;
+}
+
+.SecondaryColor {
+    background-color: #84c447;
+    color: #fff;
+}
+
+.Gray {
+    background-color:#e7e8e9;
+    color: #333;
+}
+
+    .PrimaryColor:hover, .PrimaryColor:focus, .SecondaryColor:hover, .SecondaryColor:focus {
+        color: #fff;
+    }
+
+    .Gray:hover, .Gray:focus {
+        color: #333;
+    }
+
+table.table {
+    background-color: white;
+}
+
+table.table:not(.noHeaderColor) > thead > tr > th:first-child {
+    border-top-left-radius: 4px;
+}
+table.table:not(.noHeaderColor) > thead > tr > th:last-child {
+    border-top-right-radius: 4px;
+}
+
+
+table.table:not(.noHeaderColor) > thead > tr > th {
+    /*background-color: #90d7ec;*/
+    background-color: #eee;
+    border-bottom: none;
+    font-weight: initial;
+}
+
+label {
+    font-weight: initial;
+}
+
+*:focus {
+    outline-color: #84c447;
+}
+
+.row .lineHeightFix {
+    line-height: 48px;
+}
+
+/*input, select {
+    min-width: 180px;
+}*/
+
+.Animate {
+    -webkit-transition:left 0.2s ease-in-out;
+    -moz-transition:left 0.2s ease-in-out;
+    -o-transition:left 0.2s ease-in-out;
+    transition:left 0.2s ease-in-out;
+    position: relative;
+}
+
+.Show {
+    left: 0;
+}
+
+.Hide {
+    left: -5000px;
+    position: absolute;
+    opacity: 0;
+}
+
+select {
+    padding-right: 18px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-box-shadow: inset 0 9px 9px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 9px 9px rgba(0,0,0,0.05);
+    box-shadow: inset 0 9px 9px rgba(0,0,0,0.05);
+    background-image: url('/Content/images/btn_select.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+    select.add {
+        background-image: url('/Content/images/btn_add.png');
+    }
+
+.container {
+    background-color: white;
+    padding: 12px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    min-height: 80%;
+    overflow: auto;
+}
+
+.row {
+    margin-right: -12px;
+    margin-left: -12px;
+}
+
+.bottomMargin {
+    margin-bottom: 12px;
+}
+
+footer {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.borderBottom {
+    border-bottom: 1px solid lightgray;
+    
+}
+
+
+.row.borderBottom {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.center, table.center > thead > tr > th{
+    text-align: center;
+}
+
+.nav-tabs{
+    border-bottom: none;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    text-decoration: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #3f3f3f;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+    color: #db6719;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+.nav-tabs>li>a{
+    color: #737373;
+    line-height: 28px;
+    border: none;
+    font-weight: bold;
+}
+
+
+.nav > li.active, .nav > li.active:hover {
+    border-bottom: 2px solid #84c447;
+    font-weight: bold;
+    color: #3f3f3f;
+}
+
+.nav > li:hover {
+    background-color: rgba(0,0,0,0.05);
+    border-bottom: 2px solid transparent;
+}
+
+
+.nav-tabs>li>a:hover{
+    color: #db6719;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+}
+
+.navPill{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.nav-pills > li > div:hover,
+.nav-pills > li > div:focus{
+    cursor: pointer;
+}
+
+.nav-pills > li.active > div, 
+.nav-pills > li.active > div:hover, 
+.nav-pills > li.active > div:focus {
+    color: #ffffff;
+    background-color: #db6719;
+    cursor: default;
+}
+
+
+/* Pagination fixes */
+.pagination{
+    margin: 4px 0;
+}
+
+.pagination div{
+    color: gray;
+}
+
+.pagination>.active>div, 
+.pagination>.active>div:hover, 
+.pagination>.active>div:focus{
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: rgb(96,108,136);
+    border-color: rgb(63,76,107);
+}
+
+.pagination>li>div {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: inline-block;
+}
+
+.pagination>li>div:hover, 
+.pagination>li>div:focus {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.pagination > .disabled > div, 
+.pagination > .disabled > div:hover, 
+.pagination > .disabled > div:focus {
+    color: #999999;
+    cursor: not-allowed;
+    background-color: #ffffff;
+    border-color: #dddddd;
+}
+
+
+.pagination-lg > li > div {
+    padding: 10px 16px;
+    font-size: 18px;
+}
+
+
+.myNav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .myNav > li {
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+        .myNav > li:not(.PrimaryColor):hover, myNave > li:not(.PrimaryColor):focus {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .myNav > li > a{
+            color: #555;
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+    background-color: transparent;
+}
+
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus{
+    background-color: #db6719;
+}
+
+.BigSpinner{
+    background-image: url(/Content/images/BigSpinner.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 130px;
+    height: 20px;
+    display: inline-block;
+}
+
+.BigSpinner.center{
+    margin-left: 43%;
+}
+
+.center > .BigSpinner{
+    margin: 24px 0;
+}
+
+.SmallSpinner {
+    background-image: url(/Content/images/SmallSpinner.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+
+
+@media (max-width: 767px) {
+    .row > div:last-child {
+        text-align: left;
+    }
+}
+
+@media (max-width: 991px) {
+    .row > div:first-child {
+        text-align: left;
+    }
+    .row > div:last-child {
+        text-align: right;
+    }
+
+    .row > div.center {
+        text-align: center;
+    }
+}
+
+@media (max-width: 1512px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+        float: right;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+@media (min-width: 992px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+.placeholder {
+    color: gray;
+    font-size: 12pt;
+    margin-bottom: 4px;
+    margin-top: 24px;
+}
+
+.panel-body {
+    overflow-y: auto;
+}
+
+.basicBorder {
+    margin: 12px 0;
+}
+
+
+.sidebarAndMainpaneContainer {
+    position: relative;
+}
+
+
+@media (min-height: 800px) {
+    .mainpane {
+        min-height: 640px;
+    }
+}
+
+@media (min-height: 900px) {
+    .mainpane {
+        min-height: 720px;
+    }
+}
+
+@media (min-height: 1000px) {
+    .mainpane {
+        min-height: 800px;
+    }
+}
+
+
+@media (min-height: 1100px) {
+    .mainpane {
+        min-height: 880px;
+    }
+}
+
+@media (min-height: 1200px) {
+    .mainpane {
+        min-height: 960px;
+    }
+}
+
+.selectContainer > div:first-child {
+    color: #222;
+}
+
+.selectContainer, .buttonContainer {
+    margin: 2px 0;
+}
+
+    .selectContainer textarea {
+        border-radius: 4px;
+        min-height: 72px;
+    }
+    .selectContainer select, .buttonContainer button, .selectContainer textarea {
+        margin: 4px 0;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .selectContainer input[type="text"], .selectContainer textarea {
+        min-width: 100%;
+        max-width: 100%;
+        margin: 4px 0;
+        padding: 0 4px;
+    }
+
+.basicPadding {
+    padding: 12px;
+    overflow: auto;
+}
+
+.rowMargin {
+    margin-bottom: 4px;
+}
+
+
+.containerHeader {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 32px;
+    color: #eee;
+}
+
+.FullHeaderRow, .row.FullHeaderRow {
+    margin-bottom: 12px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+    .pointer:hover {
+        cursor: pointer;
+    }
+
+/*.myTable tr td:not(.normalWidth) {
+    min-width: 120px;
+}*/
+
+.myTable tr th, .myTable tr td {
+    text-align: center;
+}
+
+.myTable tr td {
+    cursor: pointer;
+}
+
+tr.boldRow {
+    font-weight: bold;
+}
+
+tr, tr > td{
+    -webkit-transition: background-color linear .4s;
+    transition: background-color linear .4s;
+    background-color: transparent;
+}
+.table thead:first-child tr:first-child th {
+    border-top: 1px solid #ddd;
+}
+
+tbody > tr:last-child > td {
+    border-bottom: 1px solid #ddd;
+}
+
+    tr > td:first-child, .table thead:first-child tr:first-child th:first-child {
+        border-left: 1px solid #ddd;
+    }
+
+    tr > td:last-child, .table thead:first-child tr:first-child th:last-child  {
+        border-right: 1px solid #ddd;
+    }
+
+tr.SavedHighlight, tr.SavedHighlight > td {
+    background-color: rgba(0, 255, 255, .5);
+}
+
+tr.highlightedRow, tr.highlightedRow > td {
+    background-color: #F8F8F8;
+}
+
+.highlighted {
+    background-color: rgb(255, 255, 129);
+}
+
+
+.sidebar .filters {
+    overflow: hidden;
+}
+
+    .sidebar .filters h4 {
+        border-bottom: 1px solid lightgray;
+    }
+
+tr.HighlightedRow {
+}
+
+    tr.HighlightedRow > td {
+        background-color: rgb(255, 255, 0);
+    }
+
+.ClaimHistoryTable {
+    max-height: 192px;
+}
+
+.EditingElement {
+    background-color: transparent;
+    -webkit-transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    .EditingElement.Editing {
+        background-color: yellow;
+        border-radius: 2px;
+        color: #555;
+    }
+
+.shortInput, .longInput {
+    padding: 0;
+    color: #555;
+    vertical-align: middle;
+    background-color: #F3F3F3;
+    border: none;
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding-right: 4px;
+    text-align: right;
+}
+
+input.shortInput, input.longInput, textarea.longInput, textarea.shortInput {
+    width: 100%;
+    min-width: 28px;
+}
+
+.shortInput:focus, .longInput:focus  {
+    background-color: #fff;
+}
+
+textarea.shortInput {
+    height: 100px;
+    padding: 4px;
+}
+
+td .shortInput, td .longInput {
+    margin-left: 0;
+    padding-right: 0;
+    padding: 0 4px;
+    text-align: left;
+}
+
+td .shortInput {
+    width: 25px;
+}
+
+td .longInput {
+    width: 80px;
+}
+
+.modal-title {
+    font-variant: small-caps;
+}
+
+.partsTable th {
+    font-variant: small-caps;
+}
+.partsTable tr > td:first-child, 
+.partsTable.table thead:first-child tr:first-child th:first-child, 
+.partsTable.table thead:first-child tr:first-child th,
+.partsTable tr > td:last-child, 
+.partsTable.table thead:first-child tr:first-child th:last-child,
+.partsTable.table tbody>tr>td
+ {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+.partsTable.table thead:first-child tr th  {
+    
+    border-bottom: 1px solid lightgray;
+    background-color: transparent;
+}
+
+.tableInput {
+    width: 162px;
+
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+    .tableInput.medium {
+        width: 120px;
+    }
+    .tableInput.small {
+        max-width: 72px;
+    }
+
+.editable {
+    cursor: pointer;
+    -webkit-transition: border-color ease-in-out .15s, background-color linear .4s;
+    transition: border-color ease-in-out .15s, background-color linear .4s;
+    border-bottom: 1px solid lightgray;
+}
+
+    .editable:hover {
+        border-bottom: 1px solid #84c447;
+    }
+
+.rowForm {
+    background-color: white;
+}
+
+.rowForm .row {
+    margin-bottom: 8px;
+    line-height: 34px;
+}
+
+    .rowForm .row select {
+        width: 100%;
+    }
+
+    .rowForm .row .input-group {
+        text-align: left;
+    }
+
+    .rowForm .row .input-group > input {
+        padding: 17px 12px;
+    }
+
+    .rowForm .row .input-group > .input-group-addon {
+        min-width: 200px;
+        text-align: left;
+    }
+
+.formLabel {
+    font-size: 14pt;
+}
+
+select.invalid, select.invalid:focus, input.invalid, input.invalid:focus {
+    border: 1px solid red;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.redHeader {
+    background: #d9534f;
+    color: #FFF;
+    padding: 4px 0px;
+    margin: 0px;
+    margin-top: 4px;
+    border-radius: 2px;
+}
+
+.smallHeader {
+    font-size: 12pt;
+    font-variant: small-caps;
+}
+
+.mediumHeader {
+    font-size: 16pt;
+    font-variant: small-caps;
+}
+
+.largeHeader {
+    font-size: 24pt;
+    font-variant: small-caps;
+}
+
+.BlockHeader {
+    line-height: 28px;
+    min-height: 36px;
+    margin-bottom: 12px;
+    display: block;
+    font-variant: small-caps;
+}
+
+    .BlockHeader.borderBottom {
+        border-bottom: 1px solid gray;
+    }
+
+    .BlockHeader .HeaderTitle {
+        font-size: 18pt;
+        float: left;
+    }
+
+    .BlockHeader.Small .HeaderTitle {
+        font-size: 14pt;
+    }
+
+    .BlockHeader .RightTitle {
+        float: right;
+    }
+
+.modal {
+    display: block;
+    background-color: rgba(0,0,0,.5);
+}
+
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 900px;
+    }
+}
+
+.badge{
+  transition: background-color .7s, font-size .7s;
+}
+
+.Bouncy{
+    background-color: red;
+    font-size: 115%;
+}
+
+.paddedLabel {
+    padding: 2px 12px;
+    cursor: pointer;
+}
+
+td > textarea {
+    width: 250px;
+    height: 100px;
+}
+
+.margin-top {
+    margin-top: 12px;
+}
+
+.boxShadow {
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+}
+
+.inline {
+    /*display: inline-block;*/
+    border-bottom: 1px solid lightgray;
+    min-height: 24px;
+    /*min-width: 100px;*/
+}
+
+    .inline > div:first-child {
+        float: left;
+        
+    }
+
+    .inline > div:last-child {
+        float: right;
+    }
+
+tr.grayBackground {
+    background-color: #eee;
+}
+
+.whiteText{
+    color: white;
+}
+
+.ValidationMessage{
+    white-space: pre-wrap;
+    border: 1px solid lightgray;
+    display: inline-block;
+    padding: 8px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.5);
+    text-align: center;
+    margin: 4px;
+}
+
+.ValidationMessage:nth-child(even){
+    background-color: lightgray;
+    color: white;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="import-poc">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>import poc</title>
+  <link href="components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/site.css" rel="stylesheet">
+</head>
+<body>
+<header ng-include="'app/header/header.html'"></header>
+<div ui-view class="container" ></div>
+
+<footer>
+  <div class="content-wrapper">
+    <p>© 2014 - Best Buy, Inc</p>
+    <p><a href="/dev-guide.html">API Documentation</a></p>
+  </div>
+</footer>
+
+<script src="components/lodash/dist/lodash.js"></script>
+<script src="components/angular/angular.js"></script>
+<script src="components/angular-ui-router/release/angular-ui-router.js"></script>
+
+<script src="app/import-poc.js"></script>
+<script src="app/home/homeCtrl.js"></script>
+<script src="app/search/searchCtrl.js"></script>
+
+</body>
+</html>

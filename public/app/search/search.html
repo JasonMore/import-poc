@@ -1,0 +1,1465 @@
+<div data-bind="with: Search">
+<div class="sidebarAndMainpaneContainer" data-bind="visible: !SelectedClaimId()">
+
+<div class="sidebar sidebarBackground" data-bind="with: SearchFilters">
+  <h4>Filters</h4>
+
+  <div class="selectContainer">
+    <div>Number of Results</div>
+    <select ng-model="count" ng-options="option for option in countOptions">
+      <option value="">Choose...</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <div>Fiscal Week</div>
+    <select ng-model="fiscalWeek" ng-options="key as value for (key, value) in fiscalWeekOptions">
+      <option value="">Choose...</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <div>Service Order Numbers</div>
+    <textarea placeholder="12345678, 23456789, 34567890"
+              data-bind="value: ServiceOrderNumbers, valueUpdate: 'afterkeydown'"> </textarea>
+  </div>
+  <div class="selectContainer">
+    <div>Third Party Administrator</div>
+    <select data-bind="options: TPAOptions, optionsText: 'Title', value: TPASetter, optionsCaption: 'Choose...'">
+      <option value="">Choose...</option>
+      <option value="">AIG</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <div>Claim Status</div>
+    <select data-bind="options: ClaimStatusOptions, selectedOptions: ClaimStatusMultipleSetter, optionsText: 'Value'"
+            size="5" multiple="true">
+      <option value="">Exception</option>
+      <option value="">Ready For Submission</option>
+      <option value="">Submitted</option>
+      <option value="">Rejected</option>
+      <option value="">Modified Rejection</option>
+      <option value="">Ready For Resubmission</option>
+      <option value="">Resubmitted</option>
+      <option value="">Approved</option>
+      <option value="">Denied</option>
+      <option value="">Non-Claimable</option>
+      <option value="">Complete</option>
+      <option value="">Approved for Submission</option>
+      <option value="">Approved for Resubmission</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <div>Business Unit</div>
+    <select
+        data-bind="options: BusinessUnitIdOptions, optionsText: 'Title', value: BusinessUnitIdSetter, optionsCaption: 'Choose...'">
+      <option value="">Choose...</option>
+      <option value="">1 - SERVICE CENTER REPAIR/SHOP REPAIRS</option>
+      <option value="">2 - CE AND APPLIANCE BBY INHOME REPAIR</option>
+      <option value="">3 - 3RD PARTY IN HOME PC REPAIR</option>
+      <option value="">4 - IN STORE REPAIR</option>
+      <option value="">5 - OTV-OUT TO VENDOR</option>
+      <option value="">6 - DTV-DIRECT TO VENDOR</option>
+      <option value="">7 - PARTSEARCH</option>
+      <option value="">8 - DOUBLE AGENT REPAIR</option>
+      <option value="">11 - RAPID EXCHANGE</option>
+      <option value="">12 - SERVICE CENTER JUNKOUTS</option>
+      <option value="">13 - RISE/IN STORE JUNKOUTS</option>
+      <option value="">14 - FOOD SPOILAGE/LAUNDRY/REPAIR REIMBURSEMENT</option>
+      <option value="">15 - 3RD PARTY CLAIMS - AIG</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <div>Product Type</div>
+    <select
+        data-bind="options: ProductTypeOptions, optionsText: 'Title', value: ProductTypeSetter, optionsCaption: 'Choose...'">
+      <option value="">Choose...</option>
+      <option value="">AC - Air Conditioner</option>
+      <option value="">BAD - Code used as a default</option>
+      <option value="">BB - Boombox</option>
+      <option value="">CC - Camcorder</option>
+      <option value="">CD1 - CD Player (single)</option>
+      <option value="">CD2 - CD Player (multi)</option>
+      <option value="">CDB - CD Boombox</option>
+      <option value="">CDC - CD Car Stereo</option>
+      <option value="">CEL - Mobile Phone</option>
+      <option value="">CM - Camera</option>
+      <option value="">CO - Photocopier</option>
+      <option value="">CS - Car Stereo, TV in car</option>
+      <option value="">DCM - Digital Camera</option>
+      <option value="">DER - Digital E Reader</option>
+      <option value="">DHD - Dehumidifier</option>
+      <option value="">DSS - Digital Satellite System</option>
+      <option value="">DVD - DVD player</option>
+      <option value="">DW - Dishwasher</option>
+      <option value="">ED - Electric Dryer</option>
+      <option value="">GD - Gas Dryer</option>
+      <option value="">ELV - Electric Vehicles</option>
+      <option value="">ER - Electric Range</option>
+      <option value="">GR - Gas Range</option>
+      <option value="">FAX - Fax machine</option>
+      <option value="">FIT - Fitness Equipment</option>
+      <option value="">FRZ - Freezer</option>
+      <option value="">HA - Home Audio system</option>
+      <option value="">GAM - Gaming</option>
+      <option value="">GPS - Global Positioning System</option>
+      <option value="">IPO - Apple IPOD</option>
+      <option value="">LP - Printer (laser)</option>
+      <option value="">MI - Musical Instruments</option>
+      <option value="">MKB - Piano keyboard</option>
+      <option value="">MO - PC Monitor</option>
+      <option value="">MP3 - MP3 players</option>
+      <option value="">MW - Microwave</option>
+      <option value="">NC - Notebook</option>
+      <option value="">PC - PC -include software reload</option>
+      <option value="">PDA - PDA</option>
+      <option value="">PR - Printer (inkjet)</option>
+      <option value="">PRP - Product Replacement Plan</option>
+      <option value="">PVR - Personal video recorder (TIVO)</option>
+      <option value="">REF - Fridge</option>
+      <option value="">SP - Speakers</option>
+      <option value="">TP - Typewriter</option>
+      <option value="">WP - Word Processor</option>
+      <option value="">TAB - Tablet/Ipad</option>
+      <option value="">TV1 - TV under 25"</option>
+      <option value="">TV2 - TV &lt; 42"</option>
+      <option value="">TV3 - TV &gt; 42"</option>
+      <option value="">VAC - Vacuum Cleaner</option>
+      <option value="">VCR - Video recorder/player</option>
+      <option value="">VCT - DVD/TV combo</option>
+      <option value="">WAS - Washing machine</option>
+      <option value="">WEB - Web TV unit</option>
+      <option value="">WM - Personal audio</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <div>Complaint Code</div>
+    <select
+        data-bind="options: ComplaintCodeOptions, optionsText: 'Title', value: ComplaintCodeSetter, optionsCaption: 'Choose...'">
+      <option value="">Choose...</option>
+      <option value="">ADHP - ACCIDENTAL DAMAGE FROM HANDLING PSP</option>
+      <option value="">APPR - Particular cosmetic item defect (cracked/chipped/etc)</option>
+      <option value="">ARCS - Arcing</option>
+      <option value="">BATT - Dead/non-chargeable battery/doesn't hold charge</option>
+      <option value="">BKUR - Data Backup / Recovery Requested</option>
+      <option value="">BTPP - PREMIUM BLACK TIE PROTECTION PSP</option>
+      <option value="">CABX - TV reception OK - Cable reception problem</option>
+      <option value="">CDIS - Unit returned - Customer not satisfied with repair(s)</option>
+      <option value="">CLEN - Routine cleaning of unit.</option>
+      <option value="">COOK - Does not heat as quick/unevenly or to specific temperature</option>
+      <option value="">DAUD - Complaint of distortion or noise on audio</option>
+      <option value="">DDEX - Unit was damaged by Data Exchange Corporation</option>
+      <option value="">DEAD - Unit does not work in any way at all. No indication of powr</option>
+      <option value="">DIAL - Incorrect station indicated/doesn't move or only in a range</option>
+      <option value="">DINT - Display works OK only at times</option>
+      <option value="">DISP - No/partial/incorrect/dull/flickering display</option>
+      <option value="">DOTV - Vendor diagnosed problem</option>
+      <option value="">DRIA - AM reception quality OK but drifts during use - FM OK</option>
+      <option value="">DRIF - FM reception quality OK but drifts during use - AM OK</option>
+      <option value="">DRIX - Reception quality OK but AM and FM drift during OK</option>
+      <option value="">ERAS - Does not erase or doesn't erase properly</option>
+      <option value="">FANN - Fan not working correctly</option>
+      <option value="">FFRW - FF and RWD and/or Search not working correctly</option>
+      <option value="">FOCS - Focus not correct or working</option>
+      <option value="">GSPF - GSP Inhome Fulfillment</option>
+      <option value="">IAUD - Sound is heard only sometimes</option>
+      <option value="">INCK - Cooks or operates properly only sometimes</option>
+      <option value="">INCP - Doesn't electrically/mech. interface w/ compatible equip.</option>
+      <option value="">INET - Internet not working properly.</option>
+      <option value="">INMT - Motor works only sometimes</option>
+      <option value="">INPR - Programs properly sometimes</option>
+      <option value="">INRE - Record function (audio or video) works sometimes</option>
+      <option value="">INRX - Receives OK sometimes - always transmits properly</option>
+      <option value="">INSS - Search and/or scan works only sometimes</option>
+      <option value="">INTB - Battery works OK sometimes</option>
+      <option value="">INTD - Works/operates sometimes. Total shutdown when not working</option>
+      <option value="">INTF - FF and RWD and/or Search works sometimes</option>
+      <option value="">INTK - Keypad/pushbuttons/dialing or input works sometimes</option>
+      <option value="">INTM - Memory works only sometimes</option>
+      <option value="">INTN - Unit rattles or makes a mech noise sometimes</option>
+      <option value="">INTP - Playback is OK sometimes</option>
+      <option value="">INTS - A particular control or switch functions properly sometimes</option>
+      <option value="">INTT - Transmits OK sometimes-always receives properly</option>
+      <option value="">INTU - Tuner works properly sometimes</option>
+      <option value="">INTX - Unit RX/TX functions properly only sometimes</option>
+      <option value="">KEYS - Keys/pushbuttons/dialing/input is mech. stuck/locked</option>
+      <option value="">LAUD - Weak LAUD</option>
+      <option value="">LENS - Macro and/or zoom not working as per specification</option>
+      <option value="">LOAD - Cartrdge/disc/tape not load/unload/eject right or eats tapes</option>
+      <option value="">MECH - MECHANISM DOES NOT WORK</option>
+      <option value="">MEMY - Memory not programming or holding accurately</option>
+      <option value="">MOTR - Motor or drive does not rotate at all</option>
+      <option value="">NAUD - No audio heard at all</option>
+      <option value="">NCOK - Does not heat or cook at all</option>
+      <option value="">NCOO - UNIT DOES NOT COOL</option>
+      <option value="">NOIS - Unit makes a noise or rattle not related to audio or video</option>
+      <option value="">NONE - None written on service order or taken from customer</option>
+      <option value="">NORT - Both RX/TX have no or poor receive signal/quality</option>
+      <option value="">NORX - Receive is weak or non-operational/transmit always OK</option>
+      <option value="">NOTX - No transmit or over short distance only/receive is always OK</option>
+      <option value="">NPIX - Receives audio information OK/no picture</option>
+      <option value="">NSTP - Keeps on operating/moving-doesn't stop when supposed to</option>
+      <option value="">NSTR - Sound/reception OK but no stereo reception or stereo sound</option>
+      <option value="">OAUD - Sound os OK on one side only (indicate side/channel)</option>
+      <option value="">ONSO - RE Organic not shipped on time</option>
+      <option value="">PCCP - PC will not read CD's/CD Rom problems</option>
+      <option value="">PCFA - PC has fatal exception errors - (please list if possible)</option>
+      <option value="">PCFL - PC has Floppy/Zip drive problems</option>
+      <option value="">PCGF - PC has gerneral fault protection errors (please list)</option>
+      <option value="">PCKY - PC has keyboard problems</option>
+      <option value="">PCLK - PC locks up when accessing a drive or software (please list)</option>
+      <option value="">PCMD - PC has bad modem/modem will not connect</option>
+      <option value="">PCMU - PC has mouse problems</option>
+      <option value="">PCNP - PC has no power</option>
+      <option value="">PCNS - PC has no sound</option>
+      <option value="">PCNV - PC has no video</option>
+      <option value="">PCNW - PC has network problems (Wired / Wireless)</option>
+      <option value="">PCOS - PC will not load Operating System</option>
+      <option value="">PCPE - PC peripherals not working with PC</option>
+      <option value="">PCPO - PC will not post</option>
+      <option value="">PCPR - PC will not print</option>
+      <option value="">PCTB - PC - Touchpad Button(s) Not Operating Properly</option>
+      <option value="">PIXC - Picture OK/Black and white only</option>
+      <option value="">PIXD - Snow</option>
+      <option value="">PIXF - Blurred or fuzzy picture</option>
+      <option value="">PIXI - Picture is OK sometimes</option>
+      <option value="">PIXJ - Shaky/jumpy/unsettled picture</option>
+      <option value="">PIXL - Screen is on - no picture</option>
+      <option value="">PIXS - Screen is lit but dark-audio OK</option>
+      <option value="">PIXV - Picture rolls and/or problem with vert or horz hold</option>
+      <option value="">PIXW - Weak PIXW</option>
+      <option value="">PIXX - Unit shows power indication - no sound or picture</option>
+      <option value="">PLAU - Video on playback is OK/audio has distortion</option>
+      <option value="">PLVI - Audio on playback is OK/video is distorted</option>
+      <option value="">PLYA - Video playback is OK/no audio/sound at all</option>
+      <option value="">PLYV - Audio playback is OK/no video output at all</option>
+      <option value="">PLYX - Unit is playing tape/disc but no output audio or video</option>
+      <option value="">PRNT - Printer not printing accurately and/or quality is poor</option>
+      <option value="">PROG - Will not accept information/commands</option>
+      <option value="">PRRX - Unit only receives very strong or close signals/transmit OK</option>
+      <option value="">PRTJ - Paper consistently jams up printer or does not load paper</option>
+      <option value="">PRTQ - Weak PRTQ</option>
+      <option value="">PTIR - Personal Transportation In-store Repair &gt;&gt;&gt;Autotech Only&lt;&lt;&lt;</option>
+      <option value="">RDEX - Return to DEX for REDO</option>
+      <option value="">RECA - Does not record audio information-video record OK</option>
+      <option value="">RECC - Does not record or records color poorly</option>
+      <option value="">RECI - Records audio OK but video is distorted (prerecorded is OK)</option>
+      <option value="">RECU - Records video OK but audio is distorted (prerecorded is OK)</option>
+      <option value="">RECV - Does not record video information-audio record OK</option>
+      <option value="">RECX - Does not record audio or video</option>
+      <option value="">REDO - Vendor determined redo</option>
+      <option value="">REMO - Remote ctrl operation/commands don't work/work sometimes</option>
+      <option value="">SCAN - Does not search or scan as per specifications</option>
+      <option value="">SCDS - On screen display feature not working</option>
+      <option value="">SETP - Set-up new PC configuration.</option>
+      <option value="">SHIP - Tag made for shipping purposes</option>
+      <option value="">SKIP - Unit plays media but skips over during playback</option>
+      <option value="">SOFP - Problems are with the software.</option>
+      <option value="">SPDI - Speed of operation is OK sometimes</option>
+      <option value="">SPED - Speed of operation is consistently too slow or too fast</option>
+      <option value="">SWNO - When control or switch is moved or adjusted noise is heard</option>
+      <option value="">SWNW - Switch - vol/on/off/function/pwr/etc not working at all</option>
+      <option value="">TEMC - Unit works OK until cold to touch/temp. around unit is cold</option>
+      <option value="">TEMH - Unit works OK until hot to touch/temp. around unit is hot</option>
+      <option value="">TEMP - Unit works OK until a change in temperature takes place</option>
+      <option value="">TEMT - Unit works for an amount of time then breaks down or stops</option>
+      <option value="">TIME - Clock doesn't accept programming or keeps inaccurate time</option>
+      <option value="">TUAM - No/weak/poor AM radio reception</option>
+      <option value="">TUFM - No/weak/poor FM radio reception</option>
+      <option value="">TUIN - Tuner doesn't tune stations at all</option>
+      <option value="">TUNX - No/weak/poor AM and FM radio reception</option>
+      <option value="">TUSK - Tuner skips over stations when tuning/skips over completely</option>
+      <option value="">TXNA - Unit transmits a signal or carrier but audio is not present</option>
+      <option value="">UHFX - TV reception OK on VHF-UHF problem</option>
+      <option value="">UPGR - Upgrade made to computer system.</option>
+      <option value="">VHFX - TV reception OK on UHF-VHF problem</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <div>Resolution Code</div>
+    <select
+        data-bind="options: ResolutionCodeOptions, optionsText: 'Title', value: ResolutionCodeSetter, optionsCaption: 'Choose...'">
+      <option value="">Choose...</option>
+      <option value="">3PTY - 3rd Party Vendor for Rapid Exchange.</option>
+      <option value="">ABUS - Abuse / Damage to product not covered by warranty.</option>
+      <option value="">AEXC - Advance Exchange</option>
+      <option value="">ALCP - A convergence &amp; purity alignment procedure was performed</option>
+      <option value="">ALEL - Electrical alignment of a circuit was made</option>
+      <option value="">ALME - One or more mechanical alignments was made</option>
+      <option value="">ALTP - One or more parts of the tape path was aligned</option>
+      <option value="">ALTU - The receiver tuner section was aligned</option>
+      <option value="">AUDT - A manual audit of the claim is needed</option>
+      <option value="">BATR - Weak or dead battery. Please replace. BBY is not replacing.</option>
+      <option value="">BATY - Replaced battery.</option>
+      <option value="">BBM1 - Cell Phone Repair Tier 1</option>
+      <option value="">BBM2 - Cell Phone Repair Tier 2</option>
+      <option value="">BBM3 - Cell Phone Repair Tier 3</option>
+      <option value="">BKUP - Performed data backup / recovery.</option>
+      <option value="">BULK - Bulk partsearch store orders</option>
+      <option value="">CALI - A particular circuit was calibrated</option>
+      <option value="">CARC - Car Stereo Cleaning</option>
+      <option value="">CCCL - Camcorder Cleaning (SKU 2833562)</option>
+      <option value="">CDCL - CD Player Cleaning</option>
+      <option value="">CDRE - CD Removal (SKU 2833544)</option>
+      <option value="">CDRM - CD-ROM (SKU 1478920)</option>
+      <option value="">CDTP - CD/TAPE with unit is bad - Please dispose of</option>
+      <option value="">CLEA - PSP Maintenance Cleaning.</option>
+      <option value="">CLEE - Cleaning or removal of foreign matter impacting functionaliy</option>
+      <option value="">COB1 - GS Open Box Certification: Notebooks</option>
+      <option value="">COB2 - GS Open Box Certification: Televisions</option>
+      <option value="">COB3 - GS Open Box Certification: iPads and iPhones</option>
+      <option value="">COD1 - Less than 1/2 hr to repair cosmetic damage</option>
+      <option value="">COD2 - 1/2 to 1 hour to repair cosmetic damage</option>
+      <option value="">COD3 - More than 1 hour to repair cosmetic damage</option>
+      <option value="">COST - Repair cost exceeds product value</option>
+      <option value="">CUST - CUST Unit works correctly</option>
+      <option value="">DAMI - Data Migration</option>
+      <option value="">DATA - Performed Data Recovery</option>
+      <option value="">DIAG - A full diagnostic was performed</option>
+      <option value="">DRES - Reposition/rework one or more wires</option>
+      <option value="">DTVC - Factory Warranty DTV Camera/Camcorder Repair</option>
+      <option value="">DTVL - Factory Warranty DTV Laptop Repair</option>
+      <option value="">DTVM - Direct To Vendor Mobile phone repair</option>
+      <option value="">DTVP - DTV PDA Repair</option>
+      <option value="">EADJ - Adjustment(s) of external control(s) was made</option>
+      <option value="">ENCR - Refurbished goods for Secondary Markets</option>
+      <option value="">ESTN - No response to estimate.</option>
+      <option value="">ESTR - Estimate refused.</option>
+      <option value="">EXCH - Product was exchanged (Factory Warranty Only).</option>
+      <option value="">EXES - Exchange made due to excessive amounts of service (FW Only)</option>
+      <option value="">EXLW - Exchange made due to a city</option>
+      <option value="">EXNE - Exchange made due to excessive damage (FW Only)</option>
+      <option value="">EXNP - Exchange made due to lack of parts availability (FW Only).</option>
+      <option value="">EXPC - PC Board exchanged under a manufacturer's program (FW Only)</option>
+      <option value="">FACT - A factory update or service</option>
+      <option value="">FANW - Fan works correctly</option>
+      <option value="">FIFD - Fix It Free Day</option>
+      <option value="">FIRM - Firmware / bios service</option>
+      <option value="">FOCU - Adjusted the auto focus and/or back focus.</option>
+      <option value="">FUSE - Replaced fuse.</option>
+      <option value="">FWLP - District 52 &amp; 56 only. In Store Laptop Repair</option>
+      <option value="">GABS - Gaming Basic Setup</option>
+      <option value="">GADR - Gaming Data Rescue</option>
+      <option value="">GADT - Gaming Data Transfer</option>
+      <option value="">GAME - Game - Gaming Services</option>
+      <option value="">GASI - Gaming Shield Install</option>
+      <option value="">GASU - Gaming Storage Upgrade</option>
+      <option value="">GAWF - Whole Family Gaming System Setup</option>
+      <option value="">GREY - GREY RAPID EXCHANGE SERVICE ORDER</option>
+      <option value="">GSCA - GSP Recalibration</option>
+      <option value="">GSCE - Geek Squad Precinct Client Education</option>
+      <option value="">GSCL - Geek Squad Precinct Cleaning of product</option>
+      <option value="">GSCO - Geek Squad Precinct Certified Open Box</option>
+      <option value="">GSCS - Geek Squad Precinct Computer Setup</option>
+      <option value="">GSDB - Geek Squad Precinct Data Backup or Transfer</option>
+      <option value="">GSDC - Geek Squad Precinct Complex Battery Replacement</option>
+      <option value="">GSDI - Geek Squad Precinct: A full diagnostic was performed</option>
+      <option value="">GSDR - Geek Squad Precinct Diagnostic and Repair</option>
+      <option value="">GSDS - Geek Squad Precinct Device Setup</option>
+      <option value="">GSFM - Geek Squad Precinct Factory Restore Media Creation</option>
+      <option value="">GSHD - Geek Squad Precinct Hard Drive Install</option>
+      <option value="">GSHH - Geek Squad Precinct Half Hour Quick Fix</option>
+      <option value="">GSHW - Geek Squad Precinct Misc Internal Part Install</option>
+      <option value="">GSHX - Geek Squad Precinct Hard Drive Removal</option>
+      <option value="">GSMM - Geek Squad Precinct Installation of memory / RAM</option>
+      <option value="">GSMO - Geek Squad Precinct Modem Install</option>
+      <option value="">GSNW - Geek Squad Precinct Networking Card/Adapter Install</option>
+      <option value="">GSOD - Geek Squad Precinct Optical Drive Install</option>
+      <option value="">GSOS - Geek Squad Precinct PC Repurpose</option>
+      <option value="">GSPR - Geek Squad Precinct Printer / Scanner Install</option>
+      <option value="">GSPS - Geek Squad Precinct Power Supply Install</option>
+      <option value="">GSPU - Geek Squad Precinct Computer Processor Install</option>
+      <option value="">GSPW - Geek Squad Precinct Password Reset</option>
+      <option value="">GSRE - GSP Reinstallation</option>
+      <option value="">GSS2 - Geek Squad Precinct Software Installation: 2 titles</option>
+      <option value="">GSS4 - Geek Squad Precinct Software Installation: 4 titles</option>
+      <option value="">GSSB - Geek Squad Precinct System Board Install</option>
+      <option value="">GSSC - Geek Squad Precinct Sound Card Install</option>
+      <option value="">GSSF - Geek Squad Precinct Device Full Shield Install</option>
+      <option value="">GSSH - Geek Squad Precinct Screen Shield Install</option>
+      <option value="">GSSO - Geek Squad Precinct Operating System Installation</option>
+      <option value="">GSSR - Geek Squad Precinct Mobile Phone Screen Replacement</option>
+      <option value="">GSSW - Geek Squad Precinct Software Installation</option>
+      <option value="">GSTU - Geek Squad Precinct Annual Tune-up</option>
+      <option value="">GSUN - GSP Uninstallation</option>
+      <option value="">GSVC - Geek Squad Precinct Video Card Install</option>
+      <option value="">GSWW - Geek Squad Precinct Walk Out Working</option>
+      <option value="">HARD - Hard Drive - Upgrade (SKU 1479019)</option>
+      <option value="">HRAV - Hourly Labor Rate for AV (SKU 2859204)</option>
+      <option value="">HRPC - Hourly Labor Rate for Computer (SKU 1856593)</option>
+      <option value="">IADJ - Adjustment(s) of internal control(s) was made</option>
+      <option value="">INFE - Infestation of unit.</option>
+      <option value="">IPOD - In store IPOD PRP Software update/repair</option>
+      <option value="">JAMD - Removed Jammed/Stuck/Extra disc from CD mechanism.</option>
+      <option value="">JU01 - PSP / NO LEMON EXCHANGE</option>
+      <option value="">JU02 - Part No Longer Available</option>
+      <option value="">JU03 - COMPONENTS MISSING - STORE / SVC ONLY</option>
+      <option value="">JU04 - Spills</option>
+      <option value="">JU05 - DAMAGE FROM STORE - STORE / SVC ONLY</option>
+      <option value="">JU06 - DAMAGE FROM TRANSPORTATION - STORE / SVC ONLY</option>
+      <option value="">JU07 - DAMAGE FROM DDC'S - STORE / SVC ONLY</option>
+      <option value="">JU08 - DAMAGE FROM DC's</option>
+      <option value="">JU09 - REPAIR EXCEEDS VALUE OF UNIT.</option>
+      <option value="">JU10 - DESTROY IN FIELD - STORE / SVC ONLY</option>
+      <option value="">JU11 - ACCIDENTAL DAMAGE from HANDLING</option>
+      <option value="">JU13 - FW entitled w/GSP Part delay caused repair to exceed 14 days</option>
+      <option value="">JU14 - GSP entitled where parts delay caused repair to exceed 14 da</option>
+      <option value="">KEVN - KEYS HAVE EXTENSIVE VISIBLE DAMAGE NOT COVERED BY PLAN</option>
+      <option value="">KWIK - Quick fix / repair</option>
+      <option value="">LIQU - Unit has liquid / moisture damage.</option>
+      <option value="">LNF1 - Locked and Found Customer Pick Up</option>
+      <option value="">LNF2 - Locked and Found Ship to Customer</option>
+      <option value="">LQD8 - Liquidity For RE Mobile</option>
+      <option value="">LUBE - Lubricate one or more parts and/or assemblies</option>
+      <option value="">MA00 - All FW GE/GE Appliance repairs except Sealed System.</option>
+      <option value="">MAGN - Magnolia Repair (877) 643-9682 or service@magnoliaav.com</option>
+      <option value="">MAIN - Annual Maintenance Check for Geek Squad Black Tie Premium</option>
+      <option value="">MGPA - Service Centers Use for MAV Extended Warranty Claims</option>
+      <option value="">MGSV - Managed Service Installation (SKU 7530638)</option>
+      <option value="">MGSW - Service Centers Use for MAV Store Warranty Claims</option>
+      <option value="">MMRY - Memory / Overdrive (SKU 1478877)</option>
+      <option value="">MOBI - Mobile Device / iPhone /MP3 Setup / WOW services</option>
+      <option value="">MODM - Modem - Upgrade (SKU 2028549)</option>
+      <option value="">MORE - MO - Repaired Monitor.</option>
+      <option value="">MULT - Multimedia Kit (SKU 2012351)</option>
+      <option value="">MWLK - Leakage below .1 MW/CM2</option>
+      <option value="">NECO - Labor and/or parts exceed value of unit</option>
+      <option value="">NETW - Network Card (SKU 3453845)</option>
+      <option value="">NITM - N.I.T.M</option>
+      <option value="">NPRB - NPRB Unit works correctly</option>
+      <option value="">NRTN - Antivirus installation (SKU 3984898)</option>
+      <option value="">OPSY - Operating System</option>
+      <option value="">ORN1 - Orange Label Part No Longer Available</option>
+      <option value="">ORN2 - Orange Label Part Delay</option>
+      <option value="">ORN3 - Orange Label BER</option>
+      <option value="">OTVL - Factory Warranty OTV Laptop Repair</option>
+      <option value="">PAC1 - NO FAULT FOUND (NFF)</option>
+      <option value="">PAC2 - Disassembled unit</option>
+      <option value="">PAC3 - An electrical part</option>
+      <option value="">PACS - Pac Sales Store Warranty Charge</option>
+      <option value="">PART - Part Only Order</option>
+      <option value="">PCAC - PC - Replaced PC A/C Adapter.</option>
+      <option value="">PCAT - PC - Ask An Agent Quick Fix</option>
+      <option value="">PCAX - PC - Advanced Exchange of whole product with vendor.</option>
+      <option value="">PCBD - PC - Replaced PC Processor Board (Mother</option>
+      <option value="">PCBU - Data back up services in Precinct</option>
+      <option value="">PCCA - PC-Non Abuse-Replaced PC case/bezel (PSP Only)</option>
+      <option value="">PCCC - PC - Replaced CDRW/DVD Combo Drive</option>
+      <option value="">PCCD - PC - Repaired/Replaced CD ROM</option>
+      <option value="">PCCM - PC - Repaired/Replaced PC board component</option>
+      <option value="">PCCR - PC - Repaired/Replaced PC Cable or replaced fan.</option>
+      <option value="">PCDC - PC - Repaired/Replaced DC Jack</option>
+      <option value="">PCEX - In-store express service</option>
+      <option value="">PCFZ - PC - Repaired/Replaced PC Floppy/Zip Drive.</option>
+      <option value="">PCHD - PC - Replaced PC Hard Drive</option>
+      <option value="">PCIN - PC-Replaced other internal parts</option>
+      <option value="">PCIV - PC - Replaced LCD Inverter</option>
+      <option value="">PCKB - PC - Replaced PC Keyboard.</option>
+      <option value="">PCLC - Replaced LCD panel</option>
+      <option value="">PCLD - PC - Replaced LCD Panel</option>
+      <option value="">PCMM - PC - Replaced PC Memory.</option>
+      <option value="">PCMO - PC - Repaired/Replaced PC Modem</option>
+      <option value="">PCMS - PC - Replaced Mouse.</option>
+      <option value="">PCOP - Operating System Service</option>
+      <option value="">PCRW - PC- Repaired/Replaced CD-RW Rom Drive.</option>
+      <option value="">PCSC - PC-Replaced sound card</option>
+      <option value="">PCSL - PC - Soldered / resoldered one or more parts / wires</option>
+      <option value="">PCSO - PC - Reloaded/Restored/Repaired software for the unit.</option>
+      <option value="">PCSP - PC - Replaced PC Speakers.</option>
+      <option value="">PCSU - PC - Configure/Setup PC.</option>
+      <option value="">PCTP - PC - Replaced Laptop Touchpad</option>
+      <option value="">PCTU - PC - Annual Tune up</option>
+      <option value="">PCVR - PCVR RAPID EXCHANGE SERVICE ORDER</option>
+      <option value="">PFIX - Issue was resolved via phone troubleshooting</option>
+      <option value="">PHON - Phone partsearch order</option>
+      <option value="">POWR - Replaced Power Supply.</option>
+      <option value="">PRBD - PR - Replaced PR Logic Board.</option>
+      <option value="">PRCL - Printer Cleaning</option>
+      <option value="">PRCP - PR - Replaced PR Control Panel.</option>
+      <option value="">PRCT - PR-Canon printer problem related to ink cartridge only</option>
+      <option value="">PRFU - PR - Repaired/Replaced LP Fuser</option>
+      <option value="">PRLM - PR - Repaired/Replaced LP Laser Mechanism</option>
+      <option value="">PRMO - PR - Replaced PR Motor.</option>
+      <option value="">PRPH - PR - Replaced/Adjusted PR Printhead.</option>
+      <option value="">PRPT - PR - Repaired/Replaced PR Paper Tray.</option>
+      <option value="">PRRO - PR - Repaired/Replaced PR Rollers/Guides.</option>
+      <option value="">PRSN - PR - Replaced PR Sensor/Switch</option>
+      <option value="">PRSU - PR - Configure/Setup PR</option>
+      <option value="">PRWI - PR - Repaired/Replaced PR Wiring</option>
+      <option value="">PSDI - Partsearch Diagnostic</option>
+      <option value="">PTAP - A defective appearance part was replaced</option>
+      <option value="">PTEL - A defective electrical part</option>
+      <option value="">PTME - A defective mechanical part or assembly was replaced</option>
+      <option value="">PTR1 - Personal Transportation Level 1 Repair &gt;&gt;&gt;&gt;Autotech Only&lt;&lt;&lt;</option>
+      <option value="">PTR2 - Personal Transportation Level 2 Repair &gt;&gt;&gt;&gt;Autotech Only&lt;&lt;&lt;</option>
+      <option value="">PULL - In-Home item was brought into the Svc Ctr from a residence</option>
+      <option value="">QUIT - No work done / No revenue expected.</option>
+      <option value="">RAVX - Return to Vendor Exchange - Precison use only</option>
+      <option value="">RECH - Unit or unit component was recharged</option>
+      <option value="">RECK - A cracked PC Board was repaired</option>
+      <option value="">RECO - Reconnect a part</option>
+      <option value="">REFF - Rapid Exchange Fulfillment.</option>
+      <option value="">REIN - Reinstall of Customer's TV under GSP</option>
+      <option value="">REMT - Re-mount part(s)</option>
+      <option value="">RETU - Stock unit returned</option>
+      <option value="">RPCB - An open or burnt PC Board was repaired</option>
+      <option value="">RSC1 - Level 1 Data Rescue - Geek Squad City ONLY</option>
+      <option value="">RSC2 - Level 2 Data Rescue - Geek Squad City ONLY</option>
+      <option value="">RSC3 - Level 3 Data Rescue - Geek Squad City ONLY</option>
+      <option value="">RSF1 - Flash Media Level 1 Data Rescue - Geek Squad City ONLY</option>
+      <option value="">RSF2 - Flash Media Level 2 Data Rescue - Geek Squad City ONLY</option>
+      <option value="">RTNU - Unit replaced by vendor</option>
+      <option value="">RTVM - Return Authorization for MDC or MAV products</option>
+      <option value="">RTVP - Return Authorization for Pac Sales products</option>
+      <option value="">RTVX - Return to Vendor Exchange.</option>
+      <option value="">SAEL - Sound Advice Electrical</option>
+      <option value="">SCNR - Scanner (SKU 2519251)</option>
+      <option value="">SFTW - Software (SKU 1478804)</option>
+      <option value="">SHK2 - Rapid Exchange Code for SHRINK</option>
+      <option value="">SHNK - Rapid Exchange shrink code</option>
+      <option value="">SOFU - Software Upgrade.</option>
+      <option value="">SOL1 - Less than 15 mins soldering done to part(s) or wire(s)</option>
+      <option value="">SOL2 - 15-30 minutes to solder part(s) or wire(s)</option>
+      <option value="">SOL3 - More than 30 mins to solder part(s) or wire(s)</option>
+      <option value="">SOLD - One or more parts or wires were soldered (Factory Warranty)</option>
+      <option value="">SOUN - Sound Card (SKU 2519242)</option>
+      <option value="">SPEC - Measurement made and/or unit was adjusted to specifications</option>
+      <option value="">SPYS - Anti-Spyware installation (SKU 6670621)</option>
+      <option value="">SPYW - Clean-up/Removal of Spyware/Adware (SKU 6190356)</option>
+      <option value="">SURG - A power surge/lightning - caused damage to the unit.</option>
+      <option value="">SYOC - System Customization (SKU 3984825)</option>
+      <option value="">SYOP - System Optimization (SKU 2720167)</option>
+      <option value="">SYST - System set-up (various SKU's)</option>
+      <option value="">TAPE - Tape Drive (SKU 2028512)</option>
+      <option value="">TARG - Target Only In-store Exchange</option>
+      <option value="">TECH - Prepaid Tech Support</option>
+      <option value="">TRPD - Transportation Damage (Samsung only)</option>
+      <option value="">TRRT - RECON USE ONLY : Customer Education</option>
+      <option value="">UPDT - Factory Recall</option>
+      <option value="">VCRC - VCR Cleaning (SKU 2833553)</option>
+      <option value="">VCRM - Video cassette removal (SKU 2833544)</option>
+      <option value="">VIDE - Video Card (SKU 2519233)</option>
+      <option value="">VIRU - Virus Eradication (SKU 2831298)</option>
+      <option value="">WAJA - WL Junkout ADH</option>
+      <option value="">WAJB - WL Junkout Break Fix</option>
+      <option value="">WAJL - WL Junkout Labor Only</option>
+      <option value="">WARA - WL Redo ADH</option>
+      <option value="">WARB - WL Redo Break Fix</option>
+      <option value="">WARL - WL Redo Labor Only</option>
+      <option value="">WASA - WL Standard ADH</option>
+      <option value="">WASB - WL Standard Break Fix</option>
+      <option value="">WASL - WL Standard Labor Only</option>
+      <option value="">WCGO - WCGO Replaced compressor</option>
+      <option value="">WGCO - WGCO Replaced compressor</option>
+      <option value="">WGDR - Sealed system leak repair</option>
+      <option value="">WGFM - Replaced dryer</option>
+      <option value="">WGHL - High side replacement inludes condenser/heat exchanger</option>
+      <option value="">WGLE - Appliance - Replaced fan motor</option>
+      <option value="">WGTR - Replaced/Repaired transmission</option>
+    </select>
+  </div>
+  <div class="selectContainer">
+    <label>
+      <input type="checkbox" data-bind="checked: MissingLaborPricing">
+      Missing Labor Pricing
+    </label>
+    <label>
+      <input type="checkbox" data-bind="checked: MissingPartsMarkup">
+      Missing Parts Markup
+    </label>
+    <label>
+      <input type="checkbox" data-bind="checked: MissingShippingPricing">
+      Missing Shipping Pricing
+    </label>
+  </div>
+  <div class="selectContainer">
+    <div>Contains Text Search:</div>
+    <input class="form-control" type="text" placeholder="Tech Remarks"
+           data-bind="value: TechRemarks, valueUpdate: 'afterkeydown'">
+    <input class="form-control" type="text" placeholder="Complaint Comments"
+           data-bind="value: ComplaintComments, valueUpdate: 'afterkeydown'">
+  </div>
+  <div class="pull-right">
+    <button class="btn SecondaryColor" data-bind="click: $parent.Search">Search</button>
+  </div>
+</div>
+<div class="mainpane">
+<div class="well center" data-bind="visible: LoadingClaims" style="display: none;">
+  <div class="BigSpinner"></div>
+</div>
+<script type="text/html" id="TableHeader-Template">
+  <div style="display: none;" class="row bottomMargin" data-bind="visible: !LoadingClaims() && Claims().length > 0">
+    <div class="col-md-3 left lineHeightFix">
+      <div data-bind="text: PaginationString, visible: ClaimsCount() > 0"></div>
+    </div>
+    <div class="col-md-6 center">
+      <ul class="pagination" data-bind="visible: ClaimsCount() > Count() && !LoadingClaimsCount()">
+        <li data-bind="css: { disabled: Offset() == 0 }">
+          <div data-bind="click: Offset() == 0 ? '' : GetPreviousBatch">&laquo;</div>
+        </li>
+        <!-- ko foreach: PaginationPages -->
+        <li data-bind="css: { active: $parent.Offset() == $data }">
+          <div data-bind="text: $data != '...' ? ($data + 1) : $data, click: $parent.OpenPage"></div>
+        </li>
+        <!-- /ko -->
+        <li data-bind="css: { disabled: Offset() == PaginationPages()[PaginationPages().length - 1] }">
+          <div
+              data-bind="click: Offset() == PaginationPages()[PaginationPages().length - 1] ? '' : GetNextBatch">&raquo;</div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-3 text-right lineHeightFix">
+
+    </div>
+  </div>
+</script>
+<div data-bind="visible: !SearchFilters().Loading() &amp;&amp; !LoadingClaims()">
+  <div data-bind="with: SearchFilters">
+    <div data-bind="foreach: AppliedFilters"></div>
+  </div>
+</div>
+<div data-bind="template: { name: 'TableHeader-Template' }">
+  <div class="row bottomMargin" data-bind="visible: !LoadingClaims() &amp;&amp; Claims().length > 0">
+    <div class="col-md-3 left lineHeightFix">
+      <div data-bind="text: PaginationString, visible: ClaimsCount() > 0" style="">Displaying 1 - 50 of 133</div>
+    </div>
+    <div class="col-md-6 center">
+      <ul class="pagination" data-bind="visible: ClaimsCount() > Count() &amp;&amp; !LoadingClaimsCount()">
+        <li data-bind="css: { disabled: Offset() == 0 }" class="disabled">
+          <div data-bind="click: Offset() == 0 ? '' : GetPreviousBatch">«</div>
+        </li>
+        <!-- ko foreach: PaginationPages -->
+        <li data-bind="css: { active: $parent.Offset() == $data }" class="active">
+          <div data-bind="text: $data != '...' ? ($data + 1) : $data, click: $parent.OpenPage">1</div>
+        </li>
+
+        <li data-bind="css: { active: $parent.Offset() == $data }" class="">
+          <div data-bind="text: $data != '...' ? ($data + 1) : $data, click: $parent.OpenPage">2</div>
+        </li>
+
+        <li data-bind="css: { active: $parent.Offset() == $data }" class="">
+          <div data-bind="text: $data != '...' ? ($data + 1) : $data, click: $parent.OpenPage">3</div>
+        </li>
+        <!-- /ko -->
+        <li data-bind="css: { disabled: Offset() == PaginationPages()[PaginationPages().length - 1] }" class="">
+          <div data-bind="click: Offset() == PaginationPages()[PaginationPages().length - 1] ? '' : GetNextBatch">»
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-3 text-right lineHeightFix">
+
+    </div>
+  </div>
+</div>
+<div class="bottomMargin" data-bind="visible: Claims().length > 0 &amp;&amp; !LoadingClaims()">
+<table class="table table-condensed">
+<thead>
+<tr>
+  <th class="pointer" data-bind="click: Claims.SortBy_ServiceOrderNumber">Service Order Number</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_ClaimStatusFormatted">Claim Status</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_GSPID">GSP ID</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_GSPSKU">GSP SKU</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_ProductType">Product Type</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_ModelNumber">Model Number</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_DateInFormatted">Date In</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_ComplaintDescription">Customer Complaint</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_BusinessUnitId">Business Unit</th>
+  <th class="pointer" data-bind="click: Claims.SortBy_TPA">TPA</th>
+</tr>
+</thead>
+<tbody data-bind="foreach: Claims">
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">79163500</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Submitted</td>
+  <td data-bind="text: GSPID">5015355703</td>
+  <td data-bind="text: GSPSKU">1753491</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MOBILE PHO</td>
+  <td data-bind="text: DateInFormatted">01/25/2014</td>
+  <td data-bind="text: ComplaintDescription">Device has cracked screen from being dropped. RM</td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">72176818</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Resubmission</td>
+  <td data-bind="text: GSPID">4286693224</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD196LL/A</td>
+  <td data-bind="text: DateInFormatted">01/30/2014</td>
+  <td data-bind="text: ComplaintDescription">GF//Screen Replaccement//data backup declined//eta 1 - 2 days</td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">67854368</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Rejected</td>
+  <td data-bind="text: GSPID">4296440742</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM23NR</td>
+  <td data-bind="text: DateInFormatted">01/28/2014</td>
+  <td data-bind="text: ComplaintDescription">JL&gt;&gt;Touch screen unresponsive lower 8th of the screen. Replace sc
+  </td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">69929229</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Resubmission</td>
+  <td data-bind="text: GSPID">4326766040</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">SPRINT</td>
+  <td data-bind="text: DateInFormatted">01/27/2014</td>
+  <td data-bind="text: ComplaintDescription">replace screen in store under adh bv</td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">85828178</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Submission</td>
+  <td data-bind="text: GSPID">4228129015</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM23NR</td>
+  <td data-bind="text: DateInFormatted">01/25/2014</td>
+  <td data-bind="text: ComplaintDescription">SCREEN REPLACEMENT</td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">75410502</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved for Resubmission</td>
+  <td data-bind="text: GSPID">4292617294</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM23VZNR</td>
+  <td data-bind="text: DateInFormatted">01/25/2014</td>
+  <td data-bind="text: ComplaintDescription"></td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">71465823</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Submitted</td>
+  <td data-bind="text: GSPID">4325439349</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD126LL/A</td>
+  <td data-bind="text: DateInFormatted">01/25/2014</td>
+  <td data-bind="text: ComplaintDescription">Replace screen under GSP</td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">88083278</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Submitted</td>
+  <td data-bind="text: GSPID">5029065034</td>
+  <td data-bind="text: GSPSKU">1753491</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MOBILE PHO</td>
+  <td data-bind="text: DateInFormatted">01/29/2014</td>
+  <td data-bind="text: ComplaintDescription">Screen replacement...CA</td>
+  <td data-bind="text: BusinessUnitId">4</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">81355873</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Exception</td>
+  <td data-bind="text: GSPID">3913133304</td>
+  <td data-bind="text: GSPSKU">9109902</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">SPHL710WTK</td>
+  <td data-bind="text: DateInFormatted">01/10/2014</td>
+  <td data-bind="text: ComplaintDescription">Phone does not display video. Client is not keeping phone. agent</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">75362996</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Exception</td>
+  <td data-bind="text: GSPID">4218176159</td>
+  <td data-bind="text: GSPSKU">9109902</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">SPHD710KIT</td>
+  <td data-bind="text: DateInFormatted">01/30/2014</td>
+  <td data-bind="text: ComplaintDescription">Needs Part</td>
+  <td data-bind="text: BusinessUnitId">7</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">82356287</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Resubmitted</td>
+  <td data-bind="text: GSPID">4216537965</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/22/2013</td>
+  <td data-bind="text: ComplaintDescription">Carlos// Two lines are on the left side of the screen and the tou</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">65576610</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Modified Rejection</td>
+  <td data-bind="text: GSPID">4362200036</td>
+  <td data-bind="text: GSPSKU">1753491</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/05/2013</td>
+  <td data-bind="text: ComplaintDescription">Phone will fully charge but then lose all of battery life within</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">64755939</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Rejected</td>
+  <td data-bind="text: GSPID">4303671129</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/05/2013</td>
+  <td data-bind="text: ComplaintDescription">Client came in with iphone 5 not correctly displaying battery per</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">64136171</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Denied</td>
+  <td data-bind="text: GSPID">4265263015</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM13LL</td>
+  <td data-bind="text: DateInFormatted">12/06/2013</td>
+  <td data-bind="text: ComplaintDescription">Freezing up on client battery is dying rapidly charging port is</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">75951107</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Submitted</td>
+  <td data-bind="text: GSPID">4272492138</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM28LL</td>
+  <td data-bind="text: DateInFormatted">12/05/2013</td>
+  <td data-bind="text: ComplaintDescription">BATTERY ISSUES; UNIT WILL NOT HOLD AT ALL. CLIENT WILL HOLD ONTO</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">81588767</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Submission</td>
+  <td data-bind="text: GSPID">4205512593</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD126LL/A</td>
+  <td data-bind="text: DateInFormatted">12/09/2013</td>
+  <td data-bind="text: ComplaintDescription">Phone will not power on hold/power button is not working and phon</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">64874412</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Resubmission</td>
+  <td data-bind="text: GSPID">4242965666</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/09/2013</td>
+  <td data-bind="text: ComplaintDescription">1. Sleep button does not work. Shuts off at 25% battery life. 2.</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">81486647</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Rejected</td>
+  <td data-bind="text: GSPID">4269729458</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/09/2013</td>
+  <td data-bind="text: ComplaintDescription">Battery does not hold a charge. Client is keeping original until</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">73869808</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Non-Claimable</td>
+  <td data-bind="text: GSPID">4185732477</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD146LL/A</td>
+  <td data-bind="text: DateInFormatted">12/10/2013</td>
+  <td data-bind="text: ComplaintDescription">unit not recieving text and battery dies really fast and gets ext</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">68864448</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Resubmitted</td>
+  <td data-bind="text: GSPID">4336175605</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM20LL</td>
+  <td data-bind="text: DateInFormatted">12/07/2013</td>
+  <td data-bind="text: ComplaintDescription">a170149 MCBattery will not hold a charge batterly lasts about 9</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">61170674</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Non-Claimable</td>
+  <td data-bind="text: GSPID">4229049314</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/09/2013</td>
+  <td data-bind="text: ComplaintDescription">Phones battery drains very quickly compared to how it performed i</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">77897085</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved for Resubmission</td>
+  <td data-bind="text: GSPID">4277967671</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM29LL</td>
+  <td data-bind="text: DateInFormatted">12/07/2013</td>
+  <td data-bind="text: ComplaintDescription">power button will occasionally fail battery dies quickly</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">72986272</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Rejected</td>
+  <td data-bind="text: GSPID">4235102478</td>
+  <td data-bind="text: GSPSKU">2327469</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/10/2013</td>
+  <td data-bind="text: ComplaintDescription">Battery stays below 50% will randomly shutoff during use of prog</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">76701503</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Rejected</td>
+  <td data-bind="text: GSPID">4171722585</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/10/2013</td>
+  <td data-bind="text: ComplaintDescription">unit s sleep/wake button is not working. and battery does not la</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">64603049</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved for Resubmission</td>
+  <td data-bind="text: GSPID">4220080819</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM10LL</td>
+  <td data-bind="text: DateInFormatted">12/06/2013</td>
+  <td data-bind="text: ComplaintDescription">power button is pushed in and battery does not stay charged. clie</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">69278740</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Denied</td>
+  <td data-bind="text: GSPID">4206914006</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM23VZNR</td>
+  <td data-bind="text: DateInFormatted">12/11/2013</td>
+  <td data-bind="text: ComplaintDescription">Customers phone gets really hot when it is charging and the phone</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">79583513</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Modified Rejection</td>
+  <td data-bind="text: GSPID">4165657954</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD654LL/A</td>
+  <td data-bind="text: DateInFormatted">12/09/2013</td>
+  <td data-bind="text: ComplaintDescription">Charge port will periodically work. Could get it to charge on one</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">72659815</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Denied</td>
+  <td data-bind="text: GSPID">4262933584</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD196LL/A</td>
+  <td data-bind="text: DateInFormatted">12/11/2013</td>
+  <td data-bind="text: ComplaintDescription">client Phone will not charge. Jcb</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">69478085</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Submitted</td>
+  <td data-bind="text: GSPID">4191672327</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD654LL/A</td>
+  <td data-bind="text: DateInFormatted">12/10/2013</td>
+  <td data-bind="text: ComplaintDescription">You can see the battery just drain itself. Will shut off after 20</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">64304290</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Submission</td>
+  <td data-bind="text: GSPID">4177533024</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM28LL</td>
+  <td data-bind="text: DateInFormatted">12/11/2013</td>
+  <td data-bind="text: ComplaintDescription">Power button doesn t always work and has to press hard to get it</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">85937292</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Modified Rejection</td>
+  <td data-bind="text: GSPID">4247895359</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD654LL/A</td>
+  <td data-bind="text: DateInFormatted">12/11/2013</td>
+  <td data-bind="text: ComplaintDescription">phone battery is defective. charged battery to 25% and unplugged</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">69049454</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Resubmitted</td>
+  <td data-bind="text: GSPID">4287997327</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/11/2013</td>
+  <td data-bind="text: ComplaintDescription">when charging the phone the battery stays at 9% when restarting</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">66967110</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved for Submission</td>
+  <td data-bind="text: GSPID">4181946089</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM20LL</td>
+  <td data-bind="text: DateInFormatted">12/11/2013</td>
+  <td data-bind="text: ComplaintDescription">IMEI: 990002749842470. Phone battery doesnt hold a charge. Phone</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">80544173</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Resubmitted</td>
+  <td data-bind="text: GSPID">4167218919</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD654LL/A</td>
+  <td data-bind="text: DateInFormatted">12/12/2013</td>
+  <td data-bind="text: ComplaintDescription">The battery drains within a few hours. It goes down a percentage</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">76746559</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved for Resubmission</td>
+  <td data-bind="text: GSPID">4308531701</td>
+  <td data-bind="text: GSPSKU">2327469</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">SPRINT</td>
+  <td data-bind="text: DateInFormatted">12/12/2013</td>
+  <td data-bind="text: ComplaintDescription">Apple told client that unit is bad. bad battery. Client is keepi</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">80662055</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Non-Claimable</td>
+  <td data-bind="text: GSPID">4317470031</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM13LL</td>
+  <td data-bind="text: DateInFormatted">12/12/2013</td>
+  <td data-bind="text: ComplaintDescription">unit will not charge and will not sync to itunes CPD-SD</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">64043020</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved for Resubmission</td>
+  <td data-bind="text: GSPID">4178504609</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD654LL/A</td>
+  <td data-bind="text: DateInFormatted">12/14/2013</td>
+  <td data-bind="text: ComplaintDescription">battery isn t holding a charge depletes completely within 15 min</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">84882045</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Denied</td>
+  <td data-bind="text: GSPID">4180450534</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM23NR</td>
+  <td data-bind="text: DateInFormatted">12/14/2013</td>
+  <td data-bind="text: ComplaintDescription">screen is seprating from the body battery dies very quickly //m</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">84710318</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Resubmission</td>
+  <td data-bind="text: GSPID">4213370293</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM11LL</td>
+  <td data-bind="text: DateInFormatted">12/14/2013</td>
+  <td data-bind="text: ComplaintDescription">having issues with battery holding charge. will die within 2 hrs.</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">74315047</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Submission</td>
+  <td data-bind="text: GSPID">4190546315</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM10LL</td>
+  <td data-bind="text: DateInFormatted">12/14/2013</td>
+  <td data-bind="text: ComplaintDescription">phone battery does not last very long. phone drops calls. Client</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">61827174</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Submitted</td>
+  <td data-bind="text: GSPID">4304179028</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM10LL</td>
+  <td data-bind="text: DateInFormatted">12/14/2013</td>
+  <td data-bind="text: ComplaintDescription">client is haveing some battery issiue keeps dieing after 30% of c</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">85321169</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Submitted</td>
+  <td data-bind="text: GSPID">4187533250</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD654LL/A</td>
+  <td data-bind="text: DateInFormatted">12/15/2013</td>
+  <td data-bind="text: ComplaintDescription">Unit s battery is not discharging correctly and unit will restart</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">76403118</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved</td>
+  <td data-bind="text: GSPID">4236951437</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM20LL</td>
+  <td data-bind="text: DateInFormatted">12/15/2013</td>
+  <td data-bind="text: ComplaintDescription">unit will not charge while being on the charger for 15 min. Was n</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">87089434</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Approved for Submission</td>
+  <td data-bind="text: GSPID">4166589021</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM23VZNR</td>
+  <td data-bind="text: DateInFormatted">12/13/2013</td>
+  <td data-bind="text: ComplaintDescription">Battery on the unit drains very fast usually up to 20% per 20min</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">62710692</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Modified Rejection</td>
+  <td data-bind="text: GSPID">4190072096</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">MD654LL/A</td>
+  <td data-bind="text: DateInFormatted">12/16/2013</td>
+  <td data-bind="text: ComplaintDescription">phone is bent on one side popping the screen out possible batte</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">69412127</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Submission</td>
+  <td data-bind="text: GSPID">4184980880</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM20LL</td>
+  <td data-bind="text: DateInFormatted">12/13/2013</td>
+  <td data-bind="text: ComplaintDescription">Triage performed. Results phone dies with over 15% of battery lif</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">75516313</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Resubmitted</td>
+  <td data-bind="text: GSPID">4297515980</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM20LL</td>
+  <td data-bind="text: DateInFormatted">12/13/2013</td>
+  <td data-bind="text: ComplaintDescription">Client is keeping phone. Phone battery is dropping within minutes</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">75433872</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Submission</td>
+  <td data-bind="text: GSPID">4242233725</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM10LL</td>
+  <td data-bind="text: DateInFormatted">12/16/2013</td>
+  <td data-bind="text: ComplaintDescription">RE under GSP Battery not hold charge. Client is keeping phone 1</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">79975099</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Ready For Resubmission</td>
+  <td data-bind="text: GSPID">4218500673</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM29LL</td>
+  <td data-bind="text: DateInFormatted">12/13/2013</td>
+  <td data-bind="text: ComplaintDescription">RE Approved. Top button on phone doesn t work won t lock device</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+
+<tr>
+  <td data-bind="click: $parent.OpenClaim">
+    <div class="link" data-bind="text: ServiceOrderNumber">68221983</div>
+  </td>
+  <td data-bind="text: ClaimStatusFormatted">Rejected</td>
+  <td data-bind="text: GSPID">4169527103</td>
+  <td data-bind="text: GSPSKU">9023102</td>
+  <td data-bind="text: ProductType">CEL</td>
+  <td data-bind="text: ModelNumber">BBM29LL</td>
+  <td data-bind="text: DateInFormatted">12/14/2013</td>
+  <td data-bind="text: ComplaintDescription">Unit s earpiece speaker is not working forcing client to use spe</td>
+  <td data-bind="text: BusinessUnitId">11</td>
+  <td data-bind="text: TPA">AIG</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div data-bind="template: { name: 'TableHeader-Template' }">
+  <div class="row bottomMargin" data-bind="visible: !LoadingClaims() &amp;&amp; Claims().length > 0">
+    <div class="col-md-3 left lineHeightFix">
+      <div data-bind="text: PaginationString, visible: ClaimsCount() > 0" style="">Displaying 1 - 50 of 133</div>
+    </div>
+    <div class="col-md-6 center">
+      <ul class="pagination" data-bind="visible: ClaimsCount() > Count() &amp;&amp; !LoadingClaimsCount()">
+        <li data-bind="css: { disabled: Offset() == 0 }" class="disabled">
+          <div data-bind="click: Offset() == 0 ? '' : GetPreviousBatch">«</div>
+        </li>
+        <!-- ko foreach: PaginationPages -->
+        <li data-bind="css: { active: $parent.Offset() == $data }" class="active">
+          <div data-bind="text: $data != '...' ? ($data + 1) : $data, click: $parent.OpenPage">1</div>
+        </li>
+
+        <li data-bind="css: { active: $parent.Offset() == $data }" class="">
+          <div data-bind="text: $data != '...' ? ($data + 1) : $data, click: $parent.OpenPage">2</div>
+        </li>
+
+        <li data-bind="css: { active: $parent.Offset() == $data }" class="">
+          <div data-bind="text: $data != '...' ? ($data + 1) : $data, click: $parent.OpenPage">3</div>
+        </li>
+        <!-- /ko -->
+        <li data-bind="css: { disabled: Offset() == PaginationPages()[PaginationPages().length - 1] }" class="">
+          <div data-bind="click: Offset() == PaginationPages()[PaginationPages().length - 1] ? '' : GetNextBatch">»
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-3 text-right lineHeightFix">
+
+    </div>
+  </div>
+</div>
+<div style="display:none;" class="well center" data-bind="visible: Claims().length == 0 &amp;&amp; !LoadingClaims()">
+  No claims found
+</div>
+</div>
+</div>
+<div style="display: none;" data-bind="visible: SelectedClaimId() &amp;&amp; !MassModificationScreen()">
+  <div data-bind="with: SelectedClaim"></div>
+</div>
+</div>
