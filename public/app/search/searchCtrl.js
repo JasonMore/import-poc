@@ -1,10 +1,9 @@
 app.controller('searchCtrl', function ($scope, $location) {
   // search filters
 
-  var currentSearch = $location.search();
+  $scope.search = $location.search();
 
   $scope.countOptions = ["50", "100", "150", "200", "250", "500"];
-  $scope.count = currentSearch.count;
 
   $scope.fiscalWeekOptions = {
     '2013-12-01': 'Dec 2014 Wk 1',
@@ -17,10 +16,7 @@ app.controller('searchCtrl', function ($scope, $location) {
     '2014-01-26': 'Jan 2014 Wk 3'
   };
 
-  $scope.fiscalWeek = currentSearch.fiscalWeek;
-
-
-  $scope.$watchCollection('{count:count, fiscalWeek:fiscalWeek}', function(newVal){
+  $scope.$watchCollection('search', function(newVal){
     var noNulls = _.omit(newVal, function(item){ return !item});
     $location.search(noNulls);
   });

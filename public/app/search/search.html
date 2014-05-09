@@ -6,13 +6,13 @@
 
   <div class="selectContainer">
     <div>Number of Results</div>
-    <select ng-model="count" ng-options="option for option in countOptions">
+    <select ng-model="search.count" ng-options="option for option in countOptions">
       <option value="">Choose...</option>
     </select>
   </div>
   <div class="selectContainer">
     <div>Fiscal Week</div>
-    <select ng-model="fiscalWeek" ng-options="key as value for (key, value) in fiscalWeekOptions">
+    <select ng-model="search.fiscalWeek" ng-options="key as value for (key, value) in fiscalWeekOptions">
       <option value="">Choose...</option>
     </select>
   </div>
