@@ -18,10 +18,8 @@
   </div>
   <div class="selectContainer">
     <div>Service Order Numbers</div>
-    <textarea placeholder="12345678, 23456789, 34567890"
-              data-bind="value: ServiceOrderNumbers, valueUpdate: 'afterkeydown'"> </textarea>
-  </div>
-  <div class="selectContainer">
+    <textarea ng-model="search.serviceOrderNumbers" placeholder="12345678, 23456789, 34567890"></textarea>
+
     <div>Third Party Administrator</div>
     <select data-bind="options: TPAOptions, optionsText: 'Title', value: TPASetter, optionsCaption: 'Choose...'">
       <option value="">Choose...</option>
