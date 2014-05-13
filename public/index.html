@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html ng-app="import-poc">
-<head lang="en">
-  <meta charset="UTF-8">
-  <title>import poc</title>
-  <link href="components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-  <link href="css/bootstrap-theme.css" rel="stylesheet">
-  <link href="components/font-awesome-css/css/font-awesome.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
-</head>
-<body>
-<header ng-include="'app/header/header.html'"></header>
-<div ui-view class="container" ></div>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>import poc</title>
 
-<footer>
-  <div class="content-wrapper">
-    <!--<p>© 2014 - Best Buy, Inc</p>-->
-    <p><a href="/dev-guide.html">API Documentation</a></p>
-  </div>
-</footer>
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<script src="components/lodash/dist/lodash.js"></script>
-<script src="components/angular/angular.js"></script>
-<script src="components/angular-ui-router/release/angular-ui-router.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <!--<link rel="shortcut icon" href="/Content/images/favicon.ico">
+    <link rel="icon" href="/Content/images/favicon.ico"> -->
 
-<script src="app/import-poc.js"></script>
-<script src="app/home/homeCtrl.js"></script>
-<script src="app/search/searchCtrl.js"></script>
+    <link href="components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="components/font-awesome-css/css/font-awesome.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <header ng-include="'app/header/header.html'"></header>
+    <div ui-view class="container" ></div>
+    <footer>
+      <div class="content-wrapper">
+        <!--<p>© 2014 - Best Buy, Inc</p>-->
+        <p><a href="/dev-guide.html">API Documentation</a></p>
+      </div>
+    </footer>
 
-</body>
+    <!-- scripts -->
+    <script src="components/lodash/dist/lodash.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/home/homeCtrl.js"></script>
+    <script src="app/search/searchCtrl.js"></script>
+  </body>
 </html>
