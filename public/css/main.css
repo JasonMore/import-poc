@@ -39,7 +39,7 @@ body {
 .logo {
     background: url('../images/logo.png') no-repeat;
     height: 30px;
-    width: 44px;
+    width: 94px;
     background-size: contain;
     display: inline-block;
     margin-bottom: -7px;
@@ -138,6 +138,7 @@ header > div > ul.main > li.pull-right:not(.headerInputContainer) {
     margin-left: -170px;
     width: 172px;
     float: left!important;
+    /*noinspection CssInvalidElement*/
     width: initial;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -281,10 +282,12 @@ table.table:not(.noHeaderColor) > thead > tr > th {
     /*background-color: #90d7ec;*/
     background-color: #eee;
     border-bottom: none;
+    /*noinspection CssInvalidElement*/
     font-weight: initial;
 }
 
 label {
+    /*noinspection CssInvalidElement*/
     font-weight: initial;
 }
 
@@ -537,6 +540,7 @@ footer {
 }
 
 .BigSpinner{
+    /*noinspection CssUnknownTarget*/
     background-image: url('../images/BigSpinner.gif');
     background-repeat: no-repeat;
     background-size: cover;
@@ -554,6 +558,7 @@ footer {
 }
 
 .SmallSpinner {
+    /*noinspection CssUnknownTarget*/
     background-image: url('../images/SmallSpinner.gif');
     background-repeat: no-repeat;
     background-size: cover;
